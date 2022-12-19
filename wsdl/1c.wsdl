@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+		xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/"
+		xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns:tns="http://tempuri.org/"
+		xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+		xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:xsd1="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+		xmlns:xsd2="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+		xmlns:xsd3="http://tempuri.org/"
+		name="vfc_webservices"
+		targetNamespace="http://tempuri.org/">
+	<types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+				xmlns:xs1="http://tempuri.org/"
+				xmlns:xs2="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+				xmlns:xs3="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+				targetNamespace="http://tempuri.org/"
+				attributeFormDefault="unqualified"
+				elementFormDefault="qualified">
+			<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
+			<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+			<xs:element name="TransactInOutResponse"
+					type="tns:TransactInOutResponse"/>
+			<xs:element name="ProcessAggregation"
+					type="tns:ProcessAggregation"/>
+			<xs:element name="ProcessAggregationResponse"
+					type="tns:ProcessAggregationResponse"/>
+			<xs:element name="Response"
+					type="tns:Response"/>
+			<xs:element name="PrintLabel"
+					type="tns:PrintLabel"/>
+			<xs:element name="TransactInOut"
+					type="tns:TransactInOut"/>
+			<xs:element name="PrintLabelResponse"
+					type="tns:PrintLabelResponse"/>
+			<xs:complexType name="ExtAttrList">
+				<xs:sequence>
+					<xs:element name="cost"
+							type="xs:double"/>
+					<xs:element name="VAT"
+							type="xs:double"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="PrintLabel">
+				<xs:sequence>
+					<xs:element name="BECode"
+							type="xs:string"/>
+					<xs:element name="PackType"
+							type="xs:int"/>
+					<xs:element name="SKUCode"
+							type="xs:string"/>
+					<xs:element name="SKUName"
+							type="xs:string"/>
+					<xs:element name="LabelCount"
+							type="xs:int"/>
+					<xs:element name="ParentID"
+							type="xs:string"
+							minOccurs="0"/>
+					<xs:element name="PrinterID"
+							type="xs:string"/>
+					<xs:element name="UserName"
+							type="xs:string"
+							minOccurs="0"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="PrintLabelResponse">
+				<xs:sequence>
+					<xs:element name="Response"
+							type="tns:Response"
+							form="unqualified"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ProcessAggregation">
+				<xs:sequence>
+					<xs:element name="BECode"
+							type="xs:string"/>
+					<xs:element name="ParentID"
+							type="xs:string"/>
+					<xs:element name="ProcessType"
+							type="xs:string"/>
+					<xs:element name="UserName"
+							type="xs:string"
+							minOccurs="0"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ProcessAggregationResponse">
+				<xs:sequence>
+					<xs:element name="Response"
+							type="tns:Response"
+							form="unqualified"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Response">
+				<xs:complexContent>
+					<xs:extension base="xs:complexType">
+						<xs:all>
+							<xs:element name="ReturnCode"
+									type="xs:integer"
+									form="unqualified"/>
+							<xs:element name="ReturnValue"
+									type="xs:string"
+									form="unqualified"/>
+							<xs:any namespace="##any"
+									processContents="lax"
+									minOccurs="0"
+									maxOccurs="unbounded"/>
+						</xs:all>
+						<xs:anyAttribute namespace="##any"
+								processContents="lax"/>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="TransactInOut">
+				<xs:sequence>
+					<xs:element name="BECode"
+							type="xs:string"/>
+					<xs:element name="EPC"
+							type="xs:string"/>
+					<xs:element name="Status"
+							type="xs:string"
+							minOccurs="0"/>
+					<xs:element name="SenderCustodianID"
+							type="xs:string"
+							minOccurs="0"/>
+					<xs:element name="ReceiverCustodianID"
+							type="xs:string"
+							minOccurs="0"/>
+					<xs:element name="SenderOwnerID"
+							type="xs:string"
+							minOccurs="0"/>
+					<xs:element name="ReceiverOwnerID"
+							type="xs:string"
+							minOccurs="0"/>
+					<xs:element name="BizTxnType"
+							type="xs:string"
+							minOccurs="0"/>
+					<xs:element name="BizTxnID"
+							type="xs:string"
+							minOccurs="0"/>
+					<xs:element name="ExtAttrList"
+							type="tns:ExtAttrList"
+							minOccurs="0"/>
+					<xs:element name="UserName"
+							type="xs:string"
+							minOccurs="0"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="TransactInOutResponse">
+				<xs:sequence>
+					<xs:element name="Response"
+							type="tns:Response"
+							form="unqualified"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="PrintLabel">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BECode"
+								type="xs:string"/>
+						<xs:element name="PackType"
+								type="xs:int"/>
+						<xs:element name="SKUCode"
+								type="xs:string"/>
+						<xs:element name="SKUName"
+								type="xs:string"/>
+						<xs:element name="LabelCount"
+								type="xs:int"/>
+						<xs:element name="ParentID"
+								type="xs:string"
+								nillable="true"/>
+						<xs:element name="PrinterID"
+								type="xs:string"/>
+						<xs:element name="UserName"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PrintLabelResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Response"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Hello">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="HelloResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ProcessAggregation">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BECode"
+								type="xs:string"/>
+						<xs:element name="ParentID"
+								type="xs:string"/>
+						<xs:element name="ProcessType"
+								type="xs:int"/>
+						<xs:element name="UserName"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ProcessAggregationResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Response"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TransactInOut">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BECode"
+								type="xs:string"/>
+						<xs:element name="EPC"
+								type="xs:string"/>
+						<xs:element name="Status"
+								type="xs:string"/>
+						<xs:element name="SenderCustodianID"
+								type="xs:string"/>
+						<xs:element name="ReceiverCustodianID"
+								type="xs:string"/>
+						<xs:element name="SenderOwnerID"
+								type="xs:string"
+								nillable="true"/>
+						<xs:element name="ReceiverOwnerID"
+								type="xs:string"
+								nillable="true"/>
+						<xs:element name="BizTxnType"
+								type="xs:string"/>
+						<xs:element name="BizTxnID"
+								type="xs:string"/>
+						<xs:element name="ExtAttrList"
+								type="tns:ExtAttrList"
+								nillable="true"/>
+						<xs:element name="UserName"
+								type="xs:string"
+								nillable="true"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TransactInOutResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:Response"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+		<xs:schema xmlns:ns1="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+				xmlns:tns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+				xmlns:xs="http://www.w3.org/2001/XMLSchema"
+				targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+				attributeFormDefault="unqualified"
+				elementFormDefault="qualified">
+			<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+			<xs:element name="Security"
+					type="tns:AuthHeader"/>
+			<xs:complexType name="AuthHeader">
+				<xs:sequence>
+					<xs:element name="UsernameToken"
+							type="tns:AuthToken"
+							minOccurs="0"/>
+					<xs:any namespace="##any"
+							processContents="lax"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:anyAttribute namespace="##any"
+						processContents="lax"/>
+			</xs:complexType>
+			<xs:complexType name="AuthSecret">
+				<xs:simpleContent>
+					<xs:extension base="xs:string">
+						<xs:attribute name="Type"
+								type="xs:string"/>
+					</xs:extension>
+				</xs:simpleContent>
+			</xs:complexType>
+			<xs:complexType name="AuthToken">
+				<xs:sequence>
+					<xs:element name="Username"
+							type="xs:string"
+							minOccurs="0"/>
+					<xs:element name="Password"
+							type="tns:AuthSecret"
+							minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute ref="ns1:Id"/>
+			</xs:complexType>
+		</xs:schema>
+		<xs:schema xmlns:tns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+				xmlns:xs="http://www.w3.org/2001/XMLSchema"
+				targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+				attributeFormDefault="unqualified"
+				elementFormDefault="qualified">
+			<xs:attribute name="Id"
+					type="xs:string"
+					form="qualified"/>
+		</xs:schema>
+	</types>
+	<message name="PrintLabelRequestMessage">
+		<part name="parameters"
+				element="tns:PrintLabel"/>
+	</message>
+	<message name="PrintLabelResponseMessage">
+		<part name="parameters"
+				element="tns:PrintLabelResponse"/>
+	</message>
+	<message name="HelloRequestMessage">
+		<part name="parameters"
+				element="tns:Hello"/>
+	</message>
+	<message name="HelloResponseMessage">
+		<part name="parameters"
+				element="tns:HelloResponse"/>
+	</message>
+	<message name="ProcessAggregationRequestMessage">
+		<part name="parameters"
+				element="tns:ProcessAggregation"/>
+	</message>
+	<message name="ProcessAggregationResponseMessage">
+		<part name="parameters"
+				element="tns:ProcessAggregationResponse"/>
+	</message>
+	<message name="TransactInOutRequestMessage">
+		<part name="parameters"
+				element="tns:TransactInOut"/>
+	</message>
+	<message name="TransactInOutResponseMessage">
+		<part name="parameters"
+				element="tns:TransactInOutResponse"/>
+	</message>
+	<portType name="vfc_webservicesPortType">
+		<operation name="PrintLabel">
+			<input message="tns:PrintLabelRequestMessage"/>
+			<output message="tns:PrintLabelResponseMessage"/>
+		</operation>
+		<operation name="Hello">
+			<input message="tns:HelloRequestMessage"/>
+			<output message="tns:HelloResponseMessage"/>
+		</operation>
+		<operation name="ProcessAggregation">
+			<input message="tns:ProcessAggregationRequestMessage"/>
+			<output message="tns:ProcessAggregationResponseMessage"/>
+		</operation>
+		<operation name="TransactInOut">
+			<input message="tns:TransactInOutRequestMessage"/>
+			<output message="tns:TransactInOutResponseMessage"/>
+		</operation>
+	</portType>
+	<binding name="vfc_webservicesSoapBinding"
+			type="tns:vfc_webservicesPortType">
+		<soapbind:binding style="document"
+				transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="PrintLabel">
+			<soapbind:operation style="document"
+					soapAction="http://tempuri.org/#vfc_webservices:PrintLabel"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Hello">
+			<soapbind:operation style="document"
+					soapAction="http://tempuri.org/#vfc_webservices:Hello"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ProcessAggregation">
+			<soapbind:operation style="document"
+					soapAction="http://tempuri.org/#vfc_webservices:ProcessAggregation"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="TransactInOut">
+			<soapbind:operation style="document"
+					soapAction="http://tempuri.org/#vfc_webservices:TransactInOut"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<binding name="vfc_webservicesSoap12Binding"
+			type="tns:vfc_webservicesPortType">
+		<soap12bind:binding style="document"
+				transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="PrintLabel">
+			<soap12bind:operation style="document"
+					soapAction="http://tempuri.org/#vfc_webservices:PrintLabel"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Hello">
+			<soap12bind:operation style="document"
+					soapAction="http://tempuri.org/#vfc_webservices:Hello"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ProcessAggregation">
+			<soap12bind:operation style="document"
+					soapAction="http://tempuri.org/#vfc_webservices:ProcessAggregation"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="TransactInOut">
+			<soap12bind:operation style="document"
+					soapAction="http://tempuri.org/#vfc_webservices:TransactInOut"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="vfc_webservices">
+		<port name="vfc_webservicesSoap"
+				binding="tns:vfc_webservicesSoapBinding">
+			<documentation> 
+				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/"
+						conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			</documentation>
+			<soapbind:address location="https://vfc.corp.rarus-cloud.ru/VFC_TRADE_TEST6/vfc.1cws"/>
+		</port>
+		<port name="vfc_webservicesSoap12"
+				binding="tns:vfc_webservicesSoap12Binding">
+			<soap12bind:address location="https://vfc.corp.rarus-cloud.ru/VFC_TRADE_TEST6/vfc.1cws"/>
+		</port>
+	</service>
+</definitions>
