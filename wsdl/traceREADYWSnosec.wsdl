@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions 
+  xmlns:s="http://www.w3.org/2001/XMLSchema"
+  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:tns="http://tempuri.org/"
+  xmlns:s2="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+  xmlns:s1="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="PrintLabel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BECode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PackType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="PrinterID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SKUCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SKUName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LabelCount" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ParentID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PrintLabelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PrintLabelResult" type="tns:ResultType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReturnValue" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InStockLabelPrint">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BECode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PackType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="PrinterID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SKUCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LabelCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InStockLabelPrintResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InStockLabelPrintResult" type="tns:ResultType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessAggregation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BECode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ParentID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProcessType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessAggregationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProcessAggregationResult" type="tns:ResultType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TransactInOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BECode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EPC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SenderCustodianID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReceiverCustodianID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SenderOwnerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReceiverOwnerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BizTxnType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BizTxnID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtAttrList" type="tns:ExtAttrList" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ExtAttrList">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="cost" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="VAT" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TransactInOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransactInOutResult" type="tns:ResultType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StatusUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BECode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EPC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BizStep" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Disposition" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StatusUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StatusUpdateResult" type="tns:ResultType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      <s:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" />
+      <s:element name="Security" type="s1:AuthHeader" />
+      <s:complexType name="AuthHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UsernameToken" type="s1:AuthToken" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="AuthToken">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s1:AuthSecret" />
+        </s:sequence>
+        <s:attribute ref="s2:Id" />
+      </s:complexType>
+      <s:complexType name="AuthSecret">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="Type" type="s:string" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+      <s:attribute name="Id" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PrintLabelSoapIn">
+    <wsdl:part name="parameters" element="tns:PrintLabel" />
+  </wsdl:message>
+  <wsdl:message name="PrintLabelSoapOut">
+    <wsdl:part name="parameters" element="tns:PrintLabelResponse" />
+  </wsdl:message>
+  <wsdl:message name="PrintLabelSecurity">
+    <wsdl:part name="Security" element="s1:Security" />
+  </wsdl:message>
+  <wsdl:message name="InStockLabelPrintSoapIn">
+    <wsdl:part name="parameters" element="tns:InStockLabelPrint" />
+  </wsdl:message>
+  <wsdl:message name="InStockLabelPrintSoapOut">
+    <wsdl:part name="parameters" element="tns:InStockLabelPrintResponse" />
+  </wsdl:message>
+  <wsdl:message name="InStockLabelPrintSecurity">
+    <wsdl:part name="Security" element="s1:Security" />
+  </wsdl:message>
+  <wsdl:message name="ProcessAggregationSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcessAggregation" />
+  </wsdl:message>
+  <wsdl:message name="ProcessAggregationSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcessAggregationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcessAggregationSecurity">
+    <wsdl:part name="Security" element="s1:Security" />
+  </wsdl:message>
+  <wsdl:message name="TransactInOutSoapIn">
+    <wsdl:part name="parameters" element="tns:TransactInOut" />
+  </wsdl:message>
+  <wsdl:message name="TransactInOutSoapOut">
+    <wsdl:part name="parameters" element="tns:TransactInOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransactInOutSecurity">
+    <wsdl:part name="Security" element="s1:Security" />
+  </wsdl:message>
+  <wsdl:message name="StatusUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:StatusUpdate" />
+  </wsdl:message>
+  <wsdl:message name="StatusUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:StatusUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="StatusUpdateSecurity">
+    <wsdl:part name="Security" element="s1:Security" />
+  </wsdl:message>
+  <wsdl:portType name="traceREADYWSSoap">
+    <wsdl:operation name="PrintLabel">
+      <wsdl:input message="tns:PrintLabelSoapIn" />
+      <wsdl:output message="tns:PrintLabelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InStockLabelPrint">
+      <wsdl:input message="tns:InStockLabelPrintSoapIn" />
+      <wsdl:output message="tns:InStockLabelPrintSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessAggregation">
+      <wsdl:input message="tns:ProcessAggregationSoapIn" />
+      <wsdl:output message="tns:ProcessAggregationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TransactInOut">
+      <wsdl:input message="tns:TransactInOutSoapIn" />
+      <wsdl:output message="tns:TransactInOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StatusUpdate">
+      <wsdl:input message="tns:StatusUpdateSoapIn" />
+      <wsdl:output message="tns:StatusUpdateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="traceREADYWSSoap" type="tns:traceREADYWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PrintLabel">
+      <soap:operation soapAction="http://tempuri.org/PrintLabel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InStockLabelPrint">
+      <soap:operation soapAction="http://tempuri.org/InStockLabelPrint" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InStockLabelPrintSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessAggregation">
+      <soap:operation soapAction="http://tempuri.org/ProcessAggregation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ProcessAggregationSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactInOut">
+      <soap:operation soapAction="http://tempuri.org/TransactInOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:TransactInOutSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatusUpdate">
+      <soap:operation soapAction="http://tempuri.org/StatusUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:StatusUpdateSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="traceREADYWSSoap12" type="tns:traceREADYWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PrintLabel">
+      <soap12:operation soapAction="http://tempuri.org/PrintLabel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InStockLabelPrint">
+      <soap12:operation soapAction="http://tempuri.org/InStockLabelPrint" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InStockLabelPrintSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessAggregation">
+      <soap12:operation soapAction="http://tempuri.org/ProcessAggregation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ProcessAggregationSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactInOut">
+      <soap12:operation soapAction="http://tempuri.org/TransactInOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:TransactInOutSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatusUpdate">
+      <soap12:operation soapAction="http://tempuri.org/StatusUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:StatusUpdateSecurity" part="Security" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="traceREADYWS">
+    <wsdl:port name="traceREADYWSSoap" binding="tns:traceREADYWSSoap">
+      <soap:address location="http://localhost:8000/wsdl" />
+    </wsdl:port>
+    <wsdl:port name="traceREADYWSSoap12" binding="tns:traceREADYWSSoap12">
+      <soap12:address location="http://localhost:8000/wsdl" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
